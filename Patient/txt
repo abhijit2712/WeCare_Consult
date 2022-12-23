@@ -1,0 +1,93 @@
+<?php
+     $sql = "SELECT * FROM `$docName`";
+     $result = mysqli_query($conn2, $sql);
+     
+     if ($result) {
+         while ($row = mysqli_fetch_assoc($result)) {
+             $sno = $row['sno'];
+             $name = $row['name'];
+             $email = $row['email'];
+             $date = $row['date'];
+             $time = $row['time'];
+             $status = $row['status'];
+             $payment = $row['Payment'];
+             $str = '';
+             $pay = '';
+             if ($status == 1) {
+                 $str = 'Online Appointement';
+             }
+             else {
+                 $str = 'Offline Appointment';
+             }
+     
+             if ($payment == 1) {
+                 $pay = 'Done';
+             }
+             else {
+                 $pay = 'Pending';
+             }
+     
+     
+             echo '<tr>
+                   <th scope="row">' . $sno . '</th>
+                   <td>' . $name . '</td>
+                   <td>' . $email . '</td>
+                   <td>' . $date . '</td>
+                   <td>' . $time . '</td>
+                   <td>' . $str . '</td>
+                   <td>' . $pay . '</td>
+                   <td>   
+           <button class="btn btn-primary m-1"><a href="zoom.php ?Yesid=' . $sno . '  " = class="text-light">Online</a></button>
+           <button class="btn btn-danger m-1"><a href="No.php? Noid=' . $sno . '" class="text-light">Reject</a></button>
+           <button class="btn btn-primary m-1"><a href="/App\Doc\smtp\OfflineLink.php ? Yesid=' . $sno . '" class="text-light">Confirm</a></button>
+           <button class="btn btn-primary m-1"><a href="/App\Doc\smtp\PaymentLink.php ? Yesid=' . $sno . '" class="text-light">Send Payment Link</a></button>
+         </td>
+                   </tr>
+                   ';
+         }
+     }
+     ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+     $sql = "SELECT * FROM `$docName`";
+     $result = mysqli_query($conn2, $sql);
+     
+     if ($result) {
+         while ($row = mysqli_fetch_assoc($result)) {
+             $date = $row['date'];
+             $time = $row['time'];
+        }
+
+    ?>
+
+<script type="text/javascript">
+var x = "<?php echo"$name"?>";
+console.log(x);
+</script>
+
+
+
